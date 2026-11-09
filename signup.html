@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HelloDoc | Sign Up</title>
+    <meta name="description" content="Create a HelloDoc patient account, or register as a doctor and submit your professional details for verification." />
+    <link rel="stylesheet" href="./Styles/app.css?v=sos5" />
+    <link rel="stylesheet" href="./Styles/login.css?v=blue2" />
+    <link rel="icon" type="image/svg+xml" href="/Asset/favicon.svg" />
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="container navbar-inner">
+        <a href="index.html" class="navbar-brand">
+          <img src="./Asset/Login/hello-doc.png" alt="HelloDoc" class="logo" />
+        </a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation menu">
+          <span class="nav-toggle__icon" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="dashboard.html" class="nav-link">Find a doctor</a></li>
+          <li>
+            <a href="appointments.html" class="nav-link">
+              Appointments
+              <span class="nav-badge" data-appt-badge>0</span>
+            </a>
+          </li>
+          <li><a href="story.html" class="nav-link">My Story</a></li>
+          <li><a href="help.html" class="nav-link">Help</a></li>
+        </ul>
+        <div class="navbar-actions" id="navActions">
+          <a href="login.html" class="btn btn-ghost" id="loginBtn">Login</a>
+          <a href="signup.html" class="btn btn-primary" id="signupBtn">Sign Up</a>
+          <button class="user-chip" id="userChip" hidden>
+            <span class="avatar" id="userAvatar">U</span>
+            <span class="user-name" id="userName">Guest</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="auth-page">
+      <section class="auth-card" aria-labelledby="auth-title">
+        <p class="eyebrow">Create an account</p>
+        <h1 id="auth-title">Join HelloDoc</h1>
+        <p class="auth-sub">Patients book visits; doctors register and are verified by our team before they can attend consultations.</p>
+
+        <div class="auth-tabs" role="tablist" aria-label="Account type">
+          <button type="button" role="tab" id="tab-patient" class="auth-tab" aria-selected="true" aria-controls="signupForm" data-role="patient">Patient Sign Up</button>
+          <button type="button" role="tab" id="tab-doctor" class="auth-tab" aria-selected="false" aria-controls="signupForm" data-role="doctor">Doctor Sign Up</button>
+        </div>
+        <p class="auth-hint" id="auth-hint">Create a patient account to book and manage appointments.</p>
+
+        <form id="signupForm" class="auth-form" method="post" novalidate>
+          <div class="field-row">
+            <div class="form-grp">
+              <label for="firstName">First name</label>
+              <input type="text" id="firstName" name="firstName" autocomplete="given-name" maxlength="100" required aria-describedby="firstName-error" />
+              <small class="field-error" id="firstName-error" hidden></small>
+            </div>
+            <div class="form-grp">
+              <label for="lastName">Last name</label>
+              <input type="text" id="lastName" name="lastName" autocomplete="family-name" maxlength="100" required aria-describedby="lastName-error" />
+              <small class="field-error" id="lastName-error" hidden></small>
+            </div>
+          </div>
+
+          <div class="form-grp">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" autocomplete="email" maxlength="254" required aria-describedby="email-error" />
+            <small class="field-error" id="email-error" hidden></small>
+          </div>
+
+          <div class="field-row">
+            <div class="form-grp">
+              <label for="password">Password</label>
+              <div class="password-field">
+                <input type="password" id="password" name="password" autocomplete="new-password" minlength="8" maxlength="1024" required aria-describedby="password-error" />
+                <button type="button" class="password-toggle" id="togglePassword" aria-pressed="false" aria-controls="password">Show</button>
+              </div>
+              <small class="field-error" id="password-error" hidden></small>
+            </div>
+            <div class="form-grp">
+              <label for="confirmPassword">Confirm password</label>
+              <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" minlength="8" maxlength="1024" required aria-describedby="confirmPassword-error" />
+              <small class="field-error" id="confirmPassword-error" hidden></small>
+            </div>
+          </div>
+
+          <div class="form-grp">
+            <label for="phone">Phone number <span class="optional">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="40" aria-describedby="phone-error" />
+            <small class="field-error" id="phone-error" hidden></small>
+          </div>
+
+          <fieldset class="doctor-fields" id="doctorFields" hidden>
+            <legend>Professional verification</legend>
+            <p class="auth-note">Your account is created with <strong>pending</strong> verification. You can sign in and complete your profile, but appointments and consultations stay unavailable until an administrator approves your credentials.</p>
+
+            <div class="form-grp">
+              <label for="specialty">Medical specialty</label>
+              <input type="text" id="specialty" name="specialty" maxlength="120" placeholder="e.g. General practice" aria-describedby="specialty-error" />
+              <small class="field-error" id="specialty-error" hidden></small>
+            </div>
+
+            <div class="field-row">
+              <div class="form-grp">
+                <label for="licenseNumber">Registration / licence number</label>
+                <input type="text" id="licenseNumber" name="licenseNumber" maxlength="120" autocomplete="off" aria-describedby="licenseNumber-error" />
+                <small class="field-error" id="licenseNumber-error" hidden></small>
+              </div>
+              <div class="form-grp">
+                <label for="yearsExperience">Years of experience</label>
+                <input type="number" id="yearsExperience" name="yearsExperience" min="0" max="80" step="1" aria-describedby="yearsExperience-error" />
+                <small class="field-error" id="yearsExperience-error" hidden></small>
+              </div>
+            </div>
+
+            <div class="form-grp">
+              <label for="institution">Hospital or clinic</label>
+              <input type="text" id="institution" name="institution" maxlength="200" placeholder="e.g. City General Hospital" aria-describedby="institution-error" />
+              <small class="field-error" id="institution-error" hidden></small>
+            </div>
+
+            <div class="form-grp">
+              <label for="qualifications">Qualifications and experience</label>
+              <textarea id="qualifications" name="qualifications" rows="3" maxlength="2000" aria-describedby="qualifications-error"></textarea>
+              <small class="field-error" id="qualifications-error" hidden></small>
+            </div>
+          </fieldset>
+
+          <div class="form-summary" id="formSummary" role="alert" aria-live="assertive" aria-atomic="true" hidden></div>
+          <div class="form-summary form-notice" id="formNotice" role="status" aria-live="polite" hidden></div>
+
+          <button type="submit" class="btn btn-primary auth-submit" id="submitBtn">Create patient account</button>
+
+          <div class="auth-links">
+            <a href="login.html" id="loginLink">Already have an account? Login</a>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; Hellodoc 2025. All Rights Reserved. Contact us: <a href="mailto:hi@hellodoc.com">hi@hellodoc.com</a></p>
+      </div>
+    </footer>
+
+    <script src="./Scripts/nav.js?v=docbot3"></script>
+    <script src="./Scripts/signup.js"></script>
+  </body>
+</html>

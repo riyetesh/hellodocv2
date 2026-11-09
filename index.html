@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>HelloDoc | Home</title>
+    <meta
+      name="description"
+      content="HelloDoc helps patients discover approved doctors, arrange appointments and keep consultation information organized."
+    />
+    <link rel="stylesheet" href="./Styles/app.css?v=sos5" />
+    <link rel="stylesheet" href="./Styles/login.css?v=blue2" />
+    <link rel="stylesheet" href="./Styles/home.css?v=home5" />
+    <link rel="stylesheet" href="./Styles/home-bold.css?v=directoryspacing1" />
+
+    
+    <link rel="icon" type="image/svg+xml" href="/Asset/favicon.svg">
+</head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ===== Shared navbar (canonical block) =====
+         Exactly two authentication actions on every page: Login and Sign Up.
+         Login opens login.html, which owns the Patient/Doctor/Admin role
+         selector; no other page links to a role-specific login form.
+         The menu button is the only mobile menu trigger.
+    -->
+    <nav class="navbar" id="navbar">
+      <div class="container navbar-inner">
+        <a href="index.html" class="navbar-brand">
+          <img src="./Asset/Login/hello-doc.png" alt="HelloDoc" class="logo" />
+        </a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation menu">
+          <span class="nav-toggle__icon" aria-hidden="true"></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="dashboard.html" class="nav-link">Find a doctor</a></li>
+          <li>
+            <a href="appointments.html" class="nav-link">
+              Appointments
+              <span class="nav-badge" data-appt-badge>0</span>
+            </a>
+          </li>
+          <li><a href="story.html" class="nav-link">My Story</a></li>
+          <li><a href="help.html" class="nav-link">Help</a></li>
+        </ul>
+
+        <div class="navbar-actions" id="navActions">
+          <a href="login.html" class="btn btn-ghost" id="loginBtn">Login</a>
+          <a href="signup.html" class="btn btn-primary" id="signupBtn">Sign Up</a>
+          <button class="user-chip" id="userChip" hidden>
+            <span class="avatar" id="userAvatar">U</span>
+            <span class="user-name" id="userName">Guest</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main id="main">
+      <!-- ============================================================
+           Hero: editorial copy beside a real interface preview.
+           The preview is a layout illustration, not patient data.
+           ============================================================ -->
+      <section class="lp-hero" aria-labelledby="hero-title">
+        <div class="container lp-hero__inner">
+          <div class="lp-hero__copy">
+            <p class="lp-eyebrow">Care that connects. Technology that supports.</p>
+            <h1 class="lp-hero__title" id="hero-title">
+              Healthcare should be easier to reach.
+            </h1>
+            <p class="lp-hero__lead">
+              Discover approved doctors, arrange a visit, and bring the details of a consultation into one more organized experience.
+            </p>
+            <div class="lp-actions">
+              <a class="btn btn-primary btn-lg" href="dashboard.html">Find a doctor</a>
+              <a class="btn btn-outline btn-lg" href="signup.html?role=doctor">For doctors</a>
+            </div>
+          </div>
+
+          <div class="lp-hero__visual">
+            <img
+              class="lp-hero__image"
+              src="./Asset/Illustrations/hero.svg"
+              alt="Illustration of a patient and doctor connected through a digital healthcare platform"
+              width="900"
+              height="600"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           How a visit works: four selectable stages
+           ============================================================ -->
+      <section class="lp-section lp-section--tinted" aria-labelledby="steps-title">
+        <div class="container">
+          <header class="lp-section__head">
+            <p class="lp-eyebrow">How a visit works</p>
+            <h2 class="lp-section__title" id="steps-title">From an open time to a signed assessment</h2>
+            <p class="lp-section__lead">
+              Four stages, nothing automatic. Choose a stage to see what happens in the
+              product at that point.
+            </p>
+          </header>
+
+          <div class="lp-journey" data-tabs data-tab-group="journey">
+            <div class="lp-stages" role="tablist" aria-label="Stages of a visit">
+              <button type="button" class="lp-stage is-active" role="tab" id="stage-tab-1" aria-controls="stage-1" aria-selected="true">
+                <span class="lp-stage__number">01</span>
+                <span class="lp-stage__label">Find care</span>
+              </button>
+              <button type="button" class="lp-stage" role="tab" id="stage-tab-2" aria-controls="stage-2" aria-selected="false" tabindex="-1">
+                <span class="lp-stage__number">02</span>
+                <span class="lp-stage__label">Choose a visit</span>
+              </button>
+              <button type="button" class="lp-stage" role="tab" id="stage-tab-3" aria-controls="stage-3" aria-selected="false" tabindex="-1">
+                <span class="lp-stage__number">03</span>
+                <span class="lp-stage__label">Attend the consultation</span>
+              </button>
+              <button type="button" class="lp-stage" role="tab" id="stage-tab-4" aria-controls="stage-4" aria-selected="false" tabindex="-1">
+                <span class="lp-stage__number">04</span>
+                <span class="lp-stage__label">Record the assessment</span>
+              </button>
+            </div>
+
+            <div class="lp-journey__panel is-active" role="tabpanel" id="stage-1" aria-labelledby="stage-tab-1" tabindex="0">
+              <div class="lp-journey__copy">
+                <h3>Find care</h3>
+                <p>
+                  The public directory lists doctors an administrator has approved.
+                  Each entry carries the specialty, the consultation fee and the
+                  current state of appointment availability, so the first decision is
+                  made on facts rather than a marketing page.
+                </p>
+                <a class="btn btn-primary lp-journey__directory-button" href="https://hellodoc-two.vercel.app/dashboard.html">Open the directory</a>
+              </div>
+              <div class="lp-journey__visual" aria-hidden="true">
+                <div class="lp-journey__rotator" data-rotate="online-doctor">
+                  <img class="lp-journey__illustration" src="./Asset/Illustrations/onlinedoctor.svg" alt="" width="500" height="500" />
+                </div>
+              </div>
+            </div>
+
+            <div class="lp-journey__panel" role="tabpanel" id="stage-2" aria-labelledby="stage-tab-2" tabindex="0">
+              <div class="lp-journey__copy">
+                <h3>Choose a visit</h3>
+                <p>
+                  Open times come from the doctor's own availability. Selecting one
+                  creates a booking and an entry in the patient account, and the same
+                  entry appears in the doctor's workspace. Nothing is booked until
+                  the patient confirms.
+                </p>
+              </div>
+              <div class="lp-journey__visual" aria-hidden="true">
+                <img class="lp-journey__illustration" src="./Asset/Illustrations/booking.svg" alt="" width="500" height="500" />
+              </div>
+            </div>
+
+            <div class="lp-journey__panel" role="tabpanel" id="stage-3" aria-labelledby="stage-tab-3" tabindex="0">
+              <div class="lp-journey__copy">
+                <h3>Attend the consultation</h3>
+                <p>
+                  During the visit the doctor records the symptoms the patient
+                  reports and, separately, the findings they observe. Free text
+                  observations stay with the doctor and are never sent to the model.
+                </p>
+              </div>
+              <div class="lp-journey__visual" aria-hidden="true">
+                <img class="lp-journey__illustration" src="./Asset/Illustrations/hero.svg" alt="" width="500" height="500" />
+              </div>
+            </div>
+
+            <div class="lp-journey__panel" role="tabpanel" id="stage-4" aria-labelledby="stage-tab-4" tabindex="0">
+              <div class="lp-journey__copy">
+                <h3>Record the assessment</h3>
+                <p>
+                  The doctor reviews the consultation information, writes their own
+                  assessment and plan, and saves the record against that appointment.
+                  A later correction is stored as a new revision, preserving the
+                  original assessment history.
+                </p>
+              </div>
+              <div class="lp-journey__visual" aria-hidden="true">
+                <img class="lp-journey__illustration" src="./Asset/Illustrations/folder.svg" alt="" width="500" height="500" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           Two audiences, two different compositions
+           ============================================================ -->
+      <section class="lp-section lp-roles" aria-labelledby="paths-title">
+        <div class="container">
+          <header class="lp-section__head">
+            <p class="lp-eyebrow">For patients and doctors</p>
+            <h2 class="lp-section__title" id="paths-title">One platform. Two roles.</h2>
+            <p class="lp-section__lead">A clear experience for finding care and managing consultations.</p>
+          </header>
+          <div class="lp-paths">
+            <article class="lp-path lp-path--patient">
+              <p class="lp-path__label">FOR PATIENTS</p>
+              <h3 class="lp-path__heading">Find care that fits.</h3>
+              <ol class="lp-path__steps">
+                <li><span class="lp-path__number">01</span><span class="lp-path__step-text">Find doctors by specialty and fee.</span></li>
+                <li><span class="lp-path__number">02</span><span class="lp-path__step-text">Choose an available time and book.</span></li>
+                <li><span class="lp-path__number">03</span><span class="lp-path__step-text">Manage your upcoming and past visits.</span></li>
+              </ol>
+              <p class="lp-path__note">Clinical results are not visible to patients in this prototype.</p>
+              <a class="btn btn-primary lp-path__action" href="dashboard.html">Find a doctor</a>
+            </article>
+            <article class="lp-path lp-path--clinic">
+              <p class="lp-path__label">FOR DOCTORS</p>
+              <h3 class="lp-path__heading">Keep your clinical judgment central.</h3>
+              <ol class="lp-path__steps">
+                <li><span class="lp-path__number">01</span><span class="lp-path__step-text">Apply with your professional details.</span></li>
+                <li><span class="lp-path__number">02</span><span class="lp-path__step-text">After approval, manage your appointments.</span></li>
+                <li><span class="lp-path__number">03</span><span class="lp-path__step-text">Assess patients and save consultation records.</span></li>
+              </ol>
+              <p class="lp-path__note">Administrator approval is required to access clinical tools.</p>
+              <a class="btn btn-outline lp-path__action" href="signup.html?role=doctor">Apply as a doctor</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           Privacy: clear statements about data handling
+           ============================================================ -->
+      <section class="lp-privacy" aria-labelledby="privacy-title">
+        <div class="container lp-privacy__inner">
+          <div class="lp-privacy__visual">
+            <img
+              class="lp-privacy__image"
+              src="./Asset/Illustrations/privacy.svg"
+              alt="Illustration representing secure storage and privacy of health information"
+              width="720"
+              height="560"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="lp-privacy__content">
+            <p class="lp-eyebrow">Privacy matters</p>
+            <h2 class="lp-privacy__title" id="privacy-title">We respect your privacy.</h2>
+
+            <article class="lp-privacy__point">
+              <h3>
+                <span class="lp-privacy__icon" aria-hidden="true">
+                  <i class="fa-solid fa-eye-slash"></i>
+                </span>
+                <span class="lp-privacy__text">Your identity stays out of the model.</span>
+              </h3>
+            </article>
+
+            <article class="lp-privacy__point">
+              <h3>
+                <span class="lp-privacy__icon" aria-hidden="true">
+                  <svg class="lp-privacy__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.5 20 5.7v5.5c0 5.1-3.4 8.8-8 10.3-4.6-1.5-8-5.2-8-10.3V5.7L12 2.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.3 2.3 4.8-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span class="lp-privacy__text">Your data are protected by access controls.</span>
+              </h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           Final call to action: restrained, no repeat of the hero
+           ============================================================ -->
+      <section class="lp-final lp-final--contact" aria-labelledby="cta-title">
+        <div class="container">
+          <div class="lp-contact-panel">
+            <div class="lp-contact-panel__copy">
+              <h2 class="lp-final__title" id="cta-title">Have a question?</h2>
+              <p>Ask our docBot for help. If you would rather speak to a person, contact us.</p>
+            </div>
+            <a class="btn btn-primary lp-contact-panel__button" href="mailto:riyetesh@gmail.com">Contact us</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="site-footer__grid">
+          <div class="site-footer__brand">
+            <img src="./Asset/Login/hello-doc.png" alt="HelloDoc" class="site-footer__logo" />
+            <p>A digital front door to everyday healthcare. Built as a working prototype, not a deployed EHR.</p>
+          </div>
+
+          <nav class="site-footer__col" aria-labelledby="footer-explore">
+            <h2 id="footer-explore">Explore</h2>
+            <ul>
+              <li><a href="dashboard.html">Find a doctor</a></li>
+              <li><a href="appointments.html">Appointments</a></li>
+              <li><a href="help.html">Help centre</a></li>
+            </ul>
+          </nav>
+
+          <nav class="site-footer__col" aria-labelledby="footer-about">
+            <h2 id="footer-about">HelloDoc</h2>
+            <ul>
+              <li><a href="story.html">My Story</a></li>
+              <li><a href="./story.html#builder">Meet the builder</a></li>
+            </ul>
+          </nav>
+
+          <nav class="site-footer__col" aria-labelledby="footer-account">
+            <h2 id="footer-account">Account</h2>
+            <ul>
+              <li><a href="login.html">Login</a></li>
+              <li><a href="signup.html">Sign Up</a></li>
+              <li><a href="recover.html">Recover password</a></li>
+            </ul>
+          </nav>
+
+          <div class="site-footer__col" aria-labelledby="footer-contact">
+            <h2 id="footer-contact">Contact</h2>
+            <ul>
+              <li><a href="mailto:hi@hellodoc.com">hi@hellodoc.com</a></li>
+              <li><a href="tel:+917608093320">+91 7608093320</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="site-footer__bottom">
+          <p>&copy; Hellodoc 2026. All Rights Reserved.</p>
+          <p>HelloDoc does not provide emergency care or replace advice from a qualified healthcare professional.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./Scripts/appointments.js"></script>
+    <script src="./Scripts/home.js?v=journeyillustrations10"></script>
+    <script src="./Scripts/nav.js?v=docbot3"></script>
+  </body>
+</html>
